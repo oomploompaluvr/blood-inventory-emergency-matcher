@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7f9;
+  --surface: #ffffff;
+  --foreground: #16181d;
+  --muted: #5f6673;
+  --border: #e3e6eb;
+  --accent: #b4232c;
+  --accent-soft: #fbeaeb;
+  --critical: #b4232c;
+  --critical-soft: #fde8e8;
+  --low: #a15c00;
+  --low-soft: #fff3dc;
+  --ok: #1d7a46;
+  --ok-soft: #e3f5ea;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-critical: var(--critical);
+  --color-critical-soft: var(--critical-soft);
+  --color-low: var(--low);
+  --color-low-soft: var(--low-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1115;
+    --surface: #171a20;
+    --foreground: #e8eaee;
+    --muted: #98a0ad;
+    --border: #2a2f38;
+    --accent: #f0646c;
+    --accent-soft: #3a1c1f;
+    --critical: #ff7b82;
+    --critical-soft: #3d1a1d;
+    --low: #f2b45a;
+    --low-soft: #3a2a12;
+    --ok: #5fd08f;
+    --ok-soft: #14301f;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Shared form + table styling so pages stay short. */
+@layer components {
+  .input {
+    @apply w-full rounded-md border border-border bg-surface px-3 py-2 text-sm outline-none
+      focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:opacity-60;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium text-muted;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium
+      text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-border bg-surface px-3 py-1.5
+      text-sm hover:bg-background disabled:opacity-50;
+  }
+  .table {
+    @apply w-full text-left text-sm;
+  }
+  .table th {
+    @apply border-b border-border px-3 py-2 text-xs font-medium tracking-wide text-muted uppercase;
+  }
+  .table td {
+    @apply border-b border-border px-3 py-2 align-top;
+  }
+  .table tr:last-child td {
+    @apply border-b-0;
+  }
+}
